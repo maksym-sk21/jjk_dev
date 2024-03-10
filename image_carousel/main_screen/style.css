@@ -75,6 +75,12 @@ img {
     z-index: 1;
 }
 
+@media only screen and (max-width: 650px) {
+    .fullscreen-message {
+        display: block;
+    }
+}
+
 .fullscreen-message {
     display: none;
     text-align: center;
