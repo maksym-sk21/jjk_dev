@@ -115,7 +115,7 @@
             });
 
             // Проверяем сохраненное состояние полноэкранного режима
-            if (sessionStorage.getItem('fullscreenEnabled') === 'true') {
+            if (localStorage.getItem('fullscreenEnabled') === 'true') {
                 goFullscreen();
             }
         });
@@ -134,8 +134,8 @@
                     element.msRequestFullscreen();
                 }
 
-                // Сохраняем состояние полноэкранного режима
-                sessionStorage.setItem('fullscreenEnabled', 'true');
+                // Сохраняем состояние полноэкранного режима в localStorage
+                localStorage.setItem('fullscreenEnabled', 'true');
             }
         }
     </script>
