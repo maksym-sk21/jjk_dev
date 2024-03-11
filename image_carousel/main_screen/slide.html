@@ -113,18 +113,29 @@
             fullscreenButton.addEventListener('click', function () {
                 goFullscreen();
             });
+
+            // Проверяем сохраненное состояние полноэкранного режима
+            if (sessionStorage.getItem('fullscreenEnabled') === 'true') {
+                goFullscreen();
+            }
         });
 
         function goFullscreen() {
             var element = document.documentElement;
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-            } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-            } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
+            if (!document.fullscreenElement && !document.mozFullScreenElement &&
+                !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+
+                // Сохраняем состояние полноэкранного режима
+                sessionStorage.setItem('fullscreenEnabled', 'true');
             }
         }
     </script>
